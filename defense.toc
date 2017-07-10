@@ -1,5 +1,5 @@
 \beamer@endinputifotherversion {3.36pt}
 \select@language {english}
-\beamer@sectionintoc {2}{Search for Standard Model Higgs Boson with CMS}{4}{0}{1}
-\beamer@sectionintoc {3}{Calibration of CMS Hadron Forward Calorimeter}{32}{0}{2}
-\beamer@sectionintoc {4}{Simulations of Modern Calorimeter Systems}{46}{0}{3}
+\beamer@sectionintoc {2}{Search for Standard Model Higgs Boson decaying to 2 muons with CMS}{4}{0}{1}
+\beamer@sectionintoc {3}{Calibration of CMS Hadron Forward Calorimeter}{53}{0}{2}
+\beamer@sectionintoc {4}{Simulations of Modern Calorimeter Systems}{68}{0}{3}

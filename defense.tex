@@ -17,6 +17,8 @@
 \usepackage[]{graphicx}
 \usepackage{siunitx}
 \usepackage{tikz}
+\usepackage{amsmath}
+\usepackage{multirow}
 
 %
 % some settings
@@ -104,25 +106,17 @@
 %
 % Higgs Section
 %
-\section{Search for Standard Model Higgs Boson with CMS}
-  \begin{frame}{Introduction}
+\section{Search for Standard Model Higgs Boson decaying to 2 muons with CMS}
+  \begin{frame}{Introduction: Standard Model}
     \begin{columns}[T]
       \begin{column}{0.6\textwidth}
         \begin{itemize}
-          \item Standard Model - Gauge Quantum Field Theory
-          \item Global Gauge Invariance is assumed - common symmetries (e.g. translation, rotation)
-          \item Local Gauge Invariance $SU(3) \times SU(2) \times U(1)$ for internal symmetries
-            \begin{itemize}
-              \item Massless Bosons
-              \item From experiment $W^{+/-}/Z$ are known to be massive
-            \end{itemize}
-          \item Higgs Mechanism and Spontaneous Symmetry Breaking
-            \begin{itemize}
-              \item Break the Local Gauge Invariance by selecting a particular ground state (minimum of potential energy)
-              \item Generates mass terms for W,Z
-              \item Generates mass terms for fermions thru Yukawa coupling to Higgs Field
-            \end{itemize}
-         \end{itemize}
+          \item Standard Model - Quantum Field Theory
+          \item Incorporates Electromagnetic, Weak, Strong forces
+          \item Force Carriers (Bosons) and matter constituents (Fermions)
+          \item Bosons: gluons, vector bosons.
+          \item Fermions: 6 quarks and 6 leptons.
+        \end{itemize}
       \end{column}
       \begin{column}{0.4\textwidth}
         \begin{center}
@@ -130,13 +124,178 @@
         \end{center}
       \end{column}
     \end{columns}
+    \begin{block}{Remark}
+      \begin{itemize}
+        \item What is Higgs Boson and where does it fit into SM?!
+        \item Why searching Higgs Boson decaying into 2 muons?!
+      \end{itemize}
+    \end{block}
   \end{frame}
+
+  % \begin{frame}{Introduction: Standard Model}
+  %   \begin{itemize}
+  %     \item Local Gauage Invariant
+  %   \end{itemize}
+  % \end{frame}
+
+  \begin{frame}{Introduction: Standard Model U(1)}
+    \textbf{-} Start with a Lagrangian for a free fermion:\\
+    \begin{equation}
+      \label{eq:higgs_introduction_diracLagrangian}
+      \mathcal{L} = \bar{\psi}i\gamma^{\mu}\partial_{\mu}\psi - m\bar{\psi}\psi
+    \end{equation}
+    \textbf{-} 2 types of transformations:\\\vspace{-0.3cm}
+    \begin{subequations}\label{grp}
+    \begin{align}
+      Global:&\quad \psi \rightarrow e^{i\theta}\psi\\
+      Local:&\quad \psi \rightarrow e^{i\theta(x)}\psi\label{eq:higgs_introduction_localgauge}
+    \end{align}
+    \end{subequations}
+    \textbf{-} Local Transformation does not hold $\rightarrow$ introduce a vector field $A^{\mu}$:
+    \begin{subequations}\label{eq:higgs_introduction_qedgauge}
+    \begin{align}
+      A^{\mu}& \rightarrow A^{\mu} - \frac{1}{q}\partial^{\mu}\theta(x)\label{eq:higgs_introduction_photonfieldu1}\\
+      D^{\mu}& = \partial^{\mu} + iqA^{\mu}\label{eq:higgs_introduction_covariantderivative}
+    \end{align}
+    \end{subequations}
+    \textbf{-} We obtain the Quantum Electrodynamics Lagrangian (almost):\\
+    \begin{equation}
+      \label{eq:higgs_introduction_diracLagrangianwithvectormass}
+      \mathcal{L} = \bar{\psi}i\gamma^{\mu}D_{\mu}\psi - m\bar{\psi}\psi - \frac{1}{4}F^{\mu\nu}F_{\mu\nu} + m_{A}^{2}A^{\mu}A_{\mu}
+    \end{equation}
+    \textbf{-} \alert{For $m_{A}^{2}A^{\mu}A_{\mu}$ is not local gauge invariant $\rightarrow$ $m_{A} = 0$}\\
+    \textbf{-} \alert{$m\bar{\psi}\psi$ is U(1) local gauge invariant}
+  \end{frame}
+
+  \begin{frame}{Introduction: Standard Model - SU(2) and SU(2)$_L$}
+    \textbf{-} Consider 2 fermionic fields and define a doublet:\\\vspace{-0.2cm}
+    \begin{equation}
+      \Psi = (\psi_1, \psi_2)
+    \end{equation}
+    \textbf{-} Require a free Lagrangian to be invariant under Transformations:\\\vspace{-0.3cm}
+    \begin{subequations}\label{eq:higgs_introduction_gaugesu2}
+    \begin{align}
+      Global:&\quad \Psi \rightarrow e^{i\boldsymbol{\theta} \cdot \boldsymbol{\sigma}}\Psi\\
+      Local:&\quad \Psi \rightarrow e^{i\boldsymbol{\theta(x)} \cdot \boldsymbol\sigma}\Psi\label{eq:higgs_introduction_localgaugesu2}
+    \end{align}
+    \end{subequations}
+    \textbf{-} Will introduce 3 new massless vector fields.\\
+    \textbf{-} Define Chiral Projections for a Dirac-field (4-component):\\\vspace{-0.7cm}
+    \begin{subequations}\label{eq:higgs_introduction_chiralprojections}
+    \begin{align}
+      \psi_L& = \frac{1}{2}(1 - \gamma^{5})\psi\\
+      \psi_R& = \frac{1}{2}(1 + \gamma^{5})\psi\\
+      m\bar{\psi}\psi& = m \bar{\psi_L}\psi_R + m \bar{\psi_R}\psi_L
+    \end{align}
+    \end{subequations}
+    \textbf{-} \alert{Standard Model Electroweak theory imposes gauge invariance only for left-handed fermions! $\rightarrow$ SU(2)$_L$}
+  \end{frame}
+
+  \begin{frame}{Introduction: Standard Model - Problems and Solutions}
+    \begin{itemize}
+      \item SU(2)$_L$ $\times$ U(1) $\rightarrow$ 3 Massless Vector fields - contrary to observation
+      \item $\psi_L$ transforms according to SU(2)$_L$ $\times$ U(1), $\psi_R$ according to U(1) $\rightarrow$ Fermions are massless - contrary to observation
+    \end{itemize}
+    \begin{block}{Remark}
+      Solution: Higgs Mechanism - a new field living in SU(2)$_L$ $\times$ U(1) and a particular choice of the potential term. Upon Spontaneous Symmetry Breaking - masses for gauge bosons are generated!
+    \end{block}
+    \begin{block}{Quote}
+      S. Coleman: ''In general, there is no reason why an invariance of the Hamiltonian of a quantum-mechanical system should also be an invariance of the ground state of the system.''
+    \end{block}
+  \end{frame}
+
+  \begin{frame}{Introduction: Standard Model - Higgs Mechanism}
+    \textbf{-} Adding an SU(2) doublet field - 4 degrees of freedom:\\
+    \begin{align}\Phi& =\begin{bmatrix} \phi_1 + i\phi_2 \\ \phi_3 + i\phi_4 \end{bmatrix}\end{align}
+    \textbf{-} With a Potential Term:\\\vspace{-0.3cm}
+    \begin{subequations}
+    \begin{align}
+      V(\Phi)& = \mu^2\Phi^{\dagger}\Phi + \lambda(\Phi^{\dagger}\Phi)^2\\
+      \mu^2& < 0
+    %   \mathcal{L}& = \mathcal{L}_{fermion} + \mathcal{L}_{new}\\
+    % & = \bar{\Psi}i\gamma^{\mu}D_{\mu}\Psi + (D^{\mu}\Phi)^{\dagger}D_{\mu}\Phi - \mu^2\Phi^{\dagger}\Phi - \lambda(\Phi^{\   dagger}\Phi)^2
+    \end{align}
+    \end{subequations}
+    \textbf{-} With a Lagrangian:\\\vspace{-0.3cm}
+    \begin{subequations}
+    \begin{align}
+      \mathcal{L}& = \bar{\Psi}i\gamma^{\mu}D_{\mu}\Psi + (D^{\mu}\Phi)^{\dagger}D_{\mu}\Phi - \mu^2\Phi^{\dagger}\Phi - \lambda(\Phi^{\dagger}\Phi)^2
+    \end{align}
+    \end{subequations}
+    \textbf{-} With a Yukawa coupling to fermions
+    \begin{subequations}
+    \begin{align}
+      m\bar{\psi}\psi& \rightarrow y [\bar{\psi_L}\phi\psi_R + \bar{\psi_R}\bar{\phi}\psi_L]\\
+      & \rightarrow y[\begin{bmatrix} \bar{\psi_1}, \bar{\psi_2} \end{bmatrix}_L\begin{bmatrix} \phi_1 + i\phi_2 \\ \phi_3 + i\phi_4 \end{bmatrix} \psi_R + \bar{\psi}_R\begin{bmatrix} \phi_1^{\dagger} - i\phi_2^{\dagger}, \phi_3^{\dagger} - i\phi_4^{\dagger} \end{bmatrix}\begin{bmatrix} \psi_1 \\ \psi_2 \end{bmatrix}_L]
+    \end{align}
+    \end{subequations}
+  \end{frame}
+
+  \begin{frame}{Introduction: Higgs Mechanism}
+    \textbf{-} Perturb the, $\Phi$-field, SU(2) $\times$ U(1) doublet around the minimum:\\\vspace{-0.5cm}
+    \begin{align}
+      \Phi& =\begin{bmatrix} \phi_1 + i\phi_2 \\ \phi_3 + i\phi_4 \end{bmatrix}
+      \rightarrow \begin{bmatrix} \phi_1 + i\phi_2 \\ H + \nu + i\phi_4 \end{bmatrix},
+      \nu = \sqrt{-\frac{\mu^2}{\lambda}}
+    \end{align}
+    \textbf{-} Expand Lagrangian and select the Unitary Gauge\\
+    \textbf{-} $\phi_1$, $\phi_2$, $\phi_3$ components will be absorved (upon choosing the Unitary Gauge) into mass terms for 3 vector bosons by expanding the kinetic term:\\\vspace{-0.5cm}
+    \begin{subequations}
+    \begin{align}
+      \mathcal{L}_{kinetic}& = (D^{\mu}\Phi)^{\dagger}D_{\mu}\Phi
+    \end{align}
+    \end{subequations}
+    \textbf{-} Fermion mass and Coupling to Higgs Field will come from:\\\vspace{-0.5cm}
+    \begin{subequations}
+    \begin{align}
+      m\bar{\psi}\psi& \rightarrow y [\bar{\psi_L}\phi\psi_R + \bar{\psi_R}\bar{\phi}\psi_L]\\
+      & \rightarrow y[\begin{bmatrix} \bar{\psi_1}, \bar{\psi_2} \end{bmatrix}_L\begin{bmatrix} 0 \\ H + \nu \end{bmatrix} \psi_R + \bar{\psi}_R\begin{bmatrix} 0, H + \nu \end{bmatrix}\begin{bmatrix} \psi_1 \\ \psi_2 \end{bmatrix}_L]\\
+      & \rightarrow y\sqrt{-\frac{\mu^2}{2\lambda}}\bar{\psi}_{Dirac}\psi_{Dirac} + \frac{y}{\sqrt{2}}H\bar\psi_{Dirac}\psi_{Dirac}
+    \end{align}
+    \end{subequations}
+  \end{frame}
+
+  \begin{frame}{Introduction: Summary}
+      \textbf{-} Original phenomenological Lagrangian possesses local gauge invariance!\\
+      \textbf{-} Spontaneous Symmetry Breaking, \alert{by definition}, is the change of the ground state to another ground state under certain transformation - local SU(2)$_L$ $\times$ U(1) for SM!\\
+      \textbf{-} Real Higgs Field!\\
+      \textbf{-} Mass for the fermions:\\\vspace{-0.4cm}
+      \begin{subequations}
+      \begin{align}
+        y\sqrt{-\frac{\mu^2}{2\lambda}}\bar{\psi}_{Dirac}\psi_{Dirac} \rightarrow m = \frac{y\nu}{\sqrt{2}}
+      \end{align}
+      \end{subequations}
+      \textbf{-} Yukawa Coupling of Higgs to Fermions\\
+      \textbf{-} At 125 GeV Higgs boson mass, Branching Fraction is 0.00022\\
+      \begin{subequations}
+      \begin{align}
+      \mathcal{B}(H \rightarrow \mu\mu)& = \frac{\Gamma(H \rightarrow \mu\mu)}{\sum \Gamma(H \rightarrow \dots)}
+      \end{align}
+      \end{subequations}
+  \end{frame}
+
+  % \begin{frame}{Introduction: Standard Model - SU(2)$_L$ and Problems}
+  %   \textbf{-} local SU(2) invariance $\rightarrow$ 3 massless vector bosons
+  %   \textbf{-} Experiment, however, shows that W$^{+/-}$ and Z$^{0}$ are massive
+  %   \textbf{-}
+  % \end{frame}
+
+{ % all template changes are local to this group.
+    \setbeamertemplate{navigation symbols}{}
+    \begin{frame}[plain]
+        \begin{tikzpicture}[remember picture,overlay]
+            \node[at=(current page.center)] {
+                \includegraphics[width=\paperwidth]{figs/lhc/maxresdefault.jpg}
+            };
+        \end{tikzpicture}
+     \end{frame}
+}
 
   \begin{frame}{Large Hadron Collider}
     \begin{columns}[T]
       \begin{column}{0.6\textwidth}
         \begin{itemize}
-          \item LHC - Particle Accelerating Complex
+          \item LHC - Accelerating Complex
           \item Accelerates/Collides pp, Pb-p, Pb-Pb
           \item Current maximum momentum per beam is 6.5TeV/c ($\sqrt{s}=13TeV$) for proton beam
           \item ``Data Factory'' one of its kind
@@ -151,11 +310,33 @@
     \end{columns}
   \end{frame}
 
-  \begin{frame}{Compact Muon Solenoid}
-    \begin{center}
-      \includegraphics[width=0.99\textwidth, height=0.9\textheight]{figs/cms/cms_120918_03.png}
-    \end{center}
-  \end{frame}
+  { % all template changes are local to this group.
+    \setbeamertemplate{navigation symbols}{}
+    \begin{frame}[plain]
+        \begin{tikzpicture}[remember picture,overlay]
+            \node[at=(current page.center)] {
+                \includegraphics[width=\paperwidth]{figs/cms/cms_120918_03.png}
+            };
+        \end{tikzpicture}
+     \end{frame}
+}
+
+  { % all template changes are local to this group.
+    \setbeamertemplate{navigation symbols}{}
+    \begin{frame}[plain]
+        \begin{tikzpicture}[remember picture,overlay]
+            \node[at=(current page.center)] {
+                \includegraphics[width=\paperwidth]{figs/cms/cms_dataflow_simple.pdf}
+            };
+        \end{tikzpicture}
+     \end{frame}
+}
+
+  % \begin{frame}{Compact Muon Solenoid}
+  %   \begin{center}
+  %     \includegraphics[width=0.99\textwidth, height=0.9\textheight]{figs/cms/cms_120918_03.png}
+  %   \end{center}
+  % \end{frame}
 
   \begin{frame}{SM Higgs Search at CMS in Run I}
     \begin{columns}[T]
@@ -187,7 +368,7 @@
 
   \begin{frame}{Problem Statement}
     \begin{block}{Remark}
-      The primary objective of this work is to investigate the $\mu^{+} \mu^{-}$ Higgs decay mode with 35.9 fb$^-1$ of data collected in proton-proton collisions at $\sqrt{s}=13 TeV$ by Compact Muon Solenoid (CMS) Experiment during the second operational phase of LHC (2016)
+      The primary objective of this work is to investigate the $\mu^{+} \mu^{-}$ Higgs decay mode with 35.9 fb$^-1$ of data collected in proton-proton collisions at $\sqrt{s}=13$ TeV by Compact Muon Solenoid (CMS) Experiment during the second operational phase of LHC (2016)
     \end{block}
   \end{frame}
 
@@ -507,17 +688,247 @@
     \includegraphics[width=0.49\textwidth, height=0.45\textheight]{figs/higgs/distributions/bdt_uf/distribution__c11__DiMuonMass__logY.png}
   \end{frame}
 
-  \begin{frame}{Signal Modeling}
+  % \begin{frame}{Signal Modeling}
+  % \end{frame}
+
+  \begin{frame}{Signal Model: Basics}
+        \textbf{-} Triple Gaussian PDF:\\\vspace{-0.4cm}
+        \begin{align}
+          S(x, m_{H}, \theta) &= f_{1} \mathcal{N}_{1}(x, \mu_{1}, \sigma_{1}) + (1-f_{1}) \left(f_{2} \mathcal{N}_{2}(x, \mu_{2}, \sigma_{2}) + (1-f_{2}) \mathcal{N}_{3}(x, \mu_{3}, \sigma_{3})\right)
+        \end{align}
+        \textbf{-} Each production process treated separately\\\vspace{0.2cm}
+        \textbf{-} MC mass distributions are fitted and all model parameters are fixed\\\vspace{0.2cm}
+        \textbf{-} Total Signal Normalization, the SM yield, is fixed:\\\vspace{-0.4cm}
+        \begin{align}
+          \text{Yield} = \mathcal{L}\,\sigma(pp\rightarrow H)\, \mathcal{B}(H \rightarrow \mu\mu) \, \varepsilon A
+        \end{align}
+        \begin{center}
+        \includegraphics[width=0.3\textwidth, height=0.3\textheight]{figs/higgs/signalmodel/bdt/bdt_110to160_withSys/signalFit__c0__120__GluGlu__TripleGaus__default.png}
+        \includegraphics[width=0.3\textwidth, height=0.3\textheight]{figs/higgs/signalmodel/bdt/bdt_110to160_withSys/signalFit__c0__125__GluGlu__TripleGaus__default.png}
+        \includegraphics[width=0.3\textwidth, height=0.3\textheight]{figs/higgs/signalmodel/bdt/bdt_110to160_withSys/signalFit__c0__130__GluGlu__TripleGaus__default.png}
+        \end{center}
   \end{frame}
 
-  \begin{frame}{Background Modeling}
+  \begin{frame}{Signal Model: Examples}
+    \vspace{-0.7cm}
+    \begin{columns}[T]
+      \begin{column}{0.33\textwidth}
+        \begin{center}
+          \tiny{Category ''c0'' Gluon Fusion}\\
+          \includegraphics[width=0.95\textwidth, height=0.3\textheight]{figs/higgs/signalmodel/bdt/bdt_110to160_withSys/signalFit__c0__120__GluGlu__TripleGaus__default.png}\\
+          \includegraphics[width=0.95\textwidth, height=0.3\textheight]{figs/higgs/signalmodel/bdt/bdt_110to160_withSys/signalFit__c0__125__GluGlu__TripleGaus__default.png}\\
+          \includegraphics[width=0.95\textwidth, height=0.3\textheight]{figs/higgs/signalmodel/bdt/bdt_110to160_withSys/signalFit__c0__130__GluGlu__TripleGaus__default.png}
+        \end{center}
+      \end{column}
+      \begin{column}{0.33\textwidth}
+        \begin{center}
+          \tiny{Category ''c0'' Vector Boson Fusion}\\
+          \includegraphics[width=0.95\textwidth, height=0.3\textheight]{figs/higgs/signalmodel/bdt/bdt_110to160_withSys/signalFit__c0__120__VBF__TripleGaus__default.png}\\
+          \includegraphics[width=0.95\textwidth, height=0.3\textheight]{figs/higgs/signalmodel/bdt/bdt_110to160_withSys/signalFit__c0__125__VBF__TripleGaus__default.png}\\
+          \includegraphics[width=0.95\textwidth, height=0.3\textheight]{figs/higgs/signalmodel/bdt/bdt_110to160_withSys/signalFit__c0__130__VBF__TripleGaus__default.png}
+        \end{center}
+      \end{column}
+      \begin{column}{0.33\textwidth}
+        \begin{center}
+          \tiny{Category ''c1'' Gluon Fusion Fusion}\\
+          \includegraphics[width=0.95\textwidth, height=0.3\textheight]{figs/higgs/signalmodel/bdt/bdt_110to160_withSys/signalFit__c1__120__GluGlu__TripleGaus__default.png}\\
+          \includegraphics[width=0.95\textwidth, height=0.3\textheight]{figs/higgs/signalmodel/bdt/bdt_110to160_withSys/signalFit__c1__125__GluGlu__TripleGaus__default.png}\\
+          \includegraphics[width=0.95\textwidth, height=0.3\textheight]{figs/higgs/signalmodel/bdt/bdt_110to160_withSys/signalFit__c1__130__GluGlu__TripleGaus__default.png}
+        \end{center}
+      \end{column}
+    \end{columns}
+  \end{frame}
+
+    \begin{frame}[c]{Signal Model: Mass Interpolation}
+    \vspace{-0.7cm}
+    \begin{columns}[T]
+      \begin{column}{0.4\textwidth}
+        \begin{center}
+          \tiny{Category ''c0'' Gluon Fusion}\\
+          \includegraphics[width=0.95\textwidth, height=0.3\textheight]{figs/higgs/signalmodel/bdt/bdt_110to160_withSys/signalFit__c0__120__GluGlu__TripleGaus__default.png}\\
+          \includegraphics[width=0.95\textwidth, height=0.3\textheight]{figs/higgs/signalmodel/bdt/bdt_110to160_withSys/signalFit__c0__125__GluGlu__TripleGaus__default.png}\\
+          \includegraphics[width=0.95\textwidth, height=0.3\textheight]{figs/higgs/signalmodel/bdt/bdt_110to160_withSys/signalFit__c0__130__GluGlu__TripleGaus__default.png}
+        \end{center}
+      \end{column}
+      \begin{column}{0.6\textwidth}
+        \begin{center}
+          \begin{itemize}
+            \item \tiny{The search is performed in the mass range [120, 130] GeV.}
+            \item \tiny{3 mass points used for parameter interpolation: 120, 125, 130 GeV}
+            \item \tiny{Parameters of individual models are fitted and then interpolated in between as function of the Higgs mass.}
+          \end{itemize}
+          \vspace{0.5cm}
+          \includegraphics[width=0.95\textwidth, height=0.65\textheight]{figs/higgs/signalmodel/bdt/bdt_110to160_withSys/signalFitInterpolationWithSpline__c0__VBF__TripleGaus__.png}
+        \end{center}
+      \end{column}
+    \end{columns}
+  \end{frame}
+
+  \begin{frame}{Background Model}
+    \begin{itemize}
+      \item Data-driven approach - providing actual mathematical functions as pdf candidates
+      \item 2 types of models: \textbf{Physics-motivated}  and \textbf{Order-dependent}
+      \item \textbf{Order-dependent} - various polynomial-like series
+      \item Background is left completely floating - all parameters of the model are floating!
+      \item Employ an envelope method - build a set of functions and use them simultaneously for the fitting procedure.
+      \item Envelope method $\rightarrow$ simplify the bias estimation
+    \end{itemize}
+  \end{frame}
+
+  \begin{frame}{Background Model}
+    \textbf{-} Physics-motivated functional forms:\\\vspace{-0.2cm}
+    \begin{align}
+        \textit{ExpPolynomial: } {B(x)}& = {e^{a_{1}x + a_{2}x^2}} \\
+        \textit{BWZ: } {B(x)}& = {\frac{e^{ax}\sigma_{z}}{(x-\mu_{z})^2 + (\frac{\sigma_{z}}{2})^2}} \\
+        \textit{BWZRedux: } {B(x)}& = {\frac{e^{a_{2}x + a_{3}x^2}}{(x-\mu_{z})^{a_{1}} + (\frac{2.5}{2})^{a_{1}}}} \\
+        \textit{BWZGamma: } {B(x)}& = {f\frac{e^{ax}\sigma_{z}}{(x-\mu_{z})^2 + (\frac{\sigma_{z}}{2})^2} + (1-f)\frac{e^{ax}}{x^2}}
+    \end{align}
+  \end{frame}
+
+  \begin{frame}{Background Model}
+    \textbf{-} Various order-dependent functional forms:\\\vspace{0.02cm}
+    \textbf{-} Order is selected by using F-Test (Fisher Test) procedure\\\vspace{-0.2cm}
+    \begin{align}
+        \textit{Bernsteins: } {B(x)}& = {\sum_{i=0}^{n} \alpha_i[\binom{n}{i}x^{i}(1-x)^{n-i}]} \\
+        \textit{SumExponentials: } {B(x)}& = {\sum_{i=1}^{n} \beta_{i}e^{\alpha_{i}x}}\\
+        \textit{SumPowers: } {B(x)}& = {\sum_{i=1}^{n} \beta_{i}x^{\alpha_{i}}}\\
+        \textit{LaurentSeries: } {B(x)}& = {\sum_{i} \alpha_{i}x^{i}}
+    \end{align}
+  \end{frame}
+
+  \begin{frame}[c]{Background Model: Examples}
+    \vspace{-0.7cm}
+    \begin{columns}[T]
+      \begin{column}{0.5\textwidth}
+        \begin{center}
+        Example of an envelope of background functions for \textbf{c12}\\
+        \includegraphics[width=0.95\textwidth, height=0.5\textheight]{figs/higgs/backgroundmodel/uf_bdt/backgroundFits__c12__bkgModels.png}
+        \end{center}
+      \end{column}
+      \begin{column}{0.5\textwidth}
+        \begin{center}
+        Example of the Fisher Test for Bernstein Polynomials for \textbf{c12}\\
+        \includegraphics[width=0.95\textwidth, height=0.5\textheight]{figs/higgs/ftest/uf/ftest__c12__bernsteinFastModels.png}
+        \end{center}
+      \end{column}
+    \end{columns}
+  \end{frame}
+
+  \begin{frame}{Background Model: c0 - c3}
+    \includegraphics[width=0.49\textwidth, height=0.45\textheight]{figs/higgs/backgroundmodel/uf_bdt/backgroundFits__c0__bkgModels.png}
+    \includegraphics[width=0.49\textwidth, height=0.45\textheight]{figs/higgs/backgroundmodel/uf_bdt/backgroundFits__c1__bkgModels.png}\\
+    \includegraphics[width=0.49\textwidth, height=0.45\textheight]{figs/higgs/backgroundmodel/uf_bdt/backgroundFits__c2__bkgModels.png}
+    \includegraphics[width=0.49\textwidth, height=0.45\textheight]{figs/higgs/backgroundmodel/uf_bdt/backgroundFits__c3__bkgModels.png}
+  \end{frame}
+
+  \begin{frame}{Background Model: c4 - c7}
+    \includegraphics[width=0.49\textwidth, height=0.45\textheight]{figs/higgs/backgroundmodel/uf_bdt/backgroundFits__c4__bkgModels.png}
+    \includegraphics[width=0.49\textwidth, height=0.45\textheight]{figs/higgs/backgroundmodel/uf_bdt/backgroundFits__c5__bkgModels.png}\\
+    \includegraphics[width=0.49\textwidth, height=0.45\textheight]{figs/higgs/backgroundmodel/uf_bdt/backgroundFits__c6__bkgModels.png}
+    \includegraphics[width=0.49\textwidth, height=0.45\textheight]{figs/higgs/backgroundmodel/uf_bdt/backgroundFits__c7__bkgModels.png}
+  \end{frame}
+
+  \begin{frame}{Background Model: c8 - c11}
+    \includegraphics[width=0.49\textwidth, height=0.45\textheight]{figs/higgs/backgroundmodel/uf_bdt/backgroundFits__c8__bkgModels.png}
+    \includegraphics[width=0.49\textwidth, height=0.45\textheight]{figs/higgs/backgroundmodel/uf_bdt/backgroundFits__c9__bkgModels.png}\\
+    \includegraphics[width=0.49\textwidth, height=0.45\textheight]{figs/higgs/backgroundmodel/uf_bdt/backgroundFits__c10__bkgModels.png}
+    \includegraphics[width=0.49\textwidth, height=0.45\textheight]{figs/higgs/backgroundmodel/uf_bdt/backgroundFits__c11__bkgModels.png}
   \end{frame}
 
   \begin{frame}{Systematic Uncertainties}
+    \begin{itemize}
+      \item Signal Shape Uncertainty
+        \begin{itemize}
+          \item Muon Scale: 5\%
+          \item Muon Resolution: up to 10\%
+          \item Nuisances to modify the shape of the signal model are added
+        \end{itemize}
+      \item Category Migration
+        \begin{itemize}
+          \item Jets Energy Scale: up to 6\%
+          \item Jets Energy Resolution:  1 - 2\%
+          \item Pile-Up: 1 - 2\%
+          \item \dots
+        \end{itemize}
+      \item Rate Uncertainties
+        \begin{itemize}
+          \item Branching Ratio $\mathcal{B}$($H$ $\rightarrow$ $\mu\mu$) - 1.7\%
+          \item Higgs boson Production Cross-sections 5 - 10\%
+        \end{itemize}
+      \item Integrated Luminosity: 2.6\%
+      \item \alert{All of the systematics, except for shape, are incorporated as multiplicative nuisances that allow the overall normalization of the signal to vary within certain bounds}
+    \end{itemize}
+  \end{frame}
 
+  \begin{frame}{Results: 95\% CL Exclusion Limits on Signal Strength $\mu$}
+    \begin{center}
+      \vspace{-0.3cm}
+      \includegraphics[width=0.99\textwidth, height=0.99\textheight]{figs/higgs/limits/bdt_110to160_withSys_limits_1906/limitsByCategory__combTotal__TripleGaus.png}
+    \end{center}
+  \end{frame}
+
+{ % all template changes are local to this group.
+    \setbeamertemplate{navigation symbols}{}
+    \begin{frame}[plain]
+        \begin{tikzpicture}[remember picture,overlay]
+            \node[at=(current page.center)] {
+                \includegraphics[width=\paperwidth]{figs/higgs/limits/bdt_110to160_withSys_limits_1906/limitsByCategory__combTotal__TripleGaus.png}
+            };
+        \end{tikzpicture}
+     \end{frame}
+}
+
+  \begin{frame}{Results: 95\% CL Exclusion Limits on Branching Fraction $\mathcal{B}$ $\rightarrow$ $\mu\mu$}
+    \begin{center}
+      \vspace{-0.3cm}
+      \includegraphics[width=0.99\textwidth, height=0.99\textheight]{figs/higgs/limits/bdt_110to160_withSys_limits_1906/limitsOnBRByCategory__combTotal__TripleGaus.png}
+    \end{center}
+  \end{frame}
+
+  { % all template changes are local to this group.
+    \setbeamertemplate{navigation symbols}{}
+    \begin{frame}[plain]
+        \begin{tikzpicture}[remember picture,overlay]
+            \node[at=(current page.center)] {
+                \includegraphics[width=\paperwidth]{figs/higgs/limits/bdt_110to160_withSys_limits_1906/limitsOnBRByCategory__combTotal__TripleGaus.png}
+            };
+        \end{tikzpicture}
+     \end{frame}
+}
+
+  \begin{frame}{Conclusions: 95\% CL Limits on $\sigma/\sigma_{SM}$}
+  \begin{center}
+\begin{tabular}{lcccccc}
+\hline
+\multirow{2}{*}{$m_\textup{h}$ [GeV]} & \multicolumn{5}{c}{Expected Limits} & \multirow{2}{*}{Observed limit} \\
+\cline{2-6}
+& $-2\sigma$ & $-1\sigma$ & median  & $1\sigma$ & $2\sigma$ & \\
+\hline
+120 & 1.08 & 1.44 & 2.02 & 2.84 & 3.84 & 1.90\\
+121 & 1.07 & 1.44 & 2.01 & 2.83 & 3.82 & 1.50\\
+122 & 1.07 & 1.43 & 1.99 & 2.83 & 3.82 & 1.63\\
+123 & 1.07 & 1.43 & 1.99 & 2.83 & 3.85 & 2.28\\
+\alert{124} & \alert{1.07} & \alert{1.43} & \alert{2.01} & \alert{2.84} & \alert{3.87} & \alert{2.92}\\
+\alert{125} & \alert{1.08} & \alert{1.44} & \alert{2.02} & \alert{2.87} & \alert{3.91} & \alert{2.77}\\
+\alert{126} & \alert{1.10} & \alert{1.47} & \alert{2.05} & \alert{2.91} & \alert{3.97} & \alert{2.37}\\
+127 & 1.12 & 1.49 & 2.09 & 2.98 & 4.04 & 2.13\\
+128 & 1.15 & 1.52 & 2.13 & 3.03 & 4.09 & 2.06\\
+129 & 1.17 & 1.56 & 2.18 & 3.09 & 4.18 & 1.94\\
+130 & 1.20 & 1.60 & 2.23 & 3.16 & 4.27 & 1.82\\
+\hline
+\end{tabular}
+\end{center}
   \end{frame}
 
   \begin{frame}{Conclusions}
+    \begin{itemize}
+      \item A search for the Standard Model Higgs Boson decaying to 2 muons has been performed.
+      \item No significant excess of events was observed
+      \item For the 125 GeV Higgs Boson, the observed (expected) limit on $\mu$ is 2.77 ($2.02^{+0.85}_{-0.58}$) $\times$ SM for 13 TeV
+      \item The observed / expected difference corresponds to $\approx$ 1$\sigma$ around 125 GeV.
+      \item For Run I, the combined observed (expected) limit for the 7 and 8 TeV data was found to be 7.4 ($6.5^{+2.8}_{-1.9}$) \times SM.
+      \item \alert{With 95\% CL we exclude the Branching Fraction ($\mathcal{B}$ $\rightarrow$ $\mu\mu$) above $\approx$ 0.0006}.
+    \end{itemize}
   \end{frame}
 
   % \begin{frame}{Shape Analysis}
@@ -693,6 +1104,16 @@
     \end{center}
   \end{frame}
 
+{ % all template changes are local to this group.
+    \setbeamertemplate{navigation symbols}{}
+    \begin{frame}[plain]
+        \begin{tikzpicture}[remember picture,overlay]
+            \node[at=(current page.center)] {
+                \includegraphics[width=\paperwidth]{figs/hf/Calorimeter_Wedges.jpg}
+            };
+        \end{tikzpicture}
+     \end{frame}
+}
 
   \begin{frame}{Problem statement}
     \begin{itemize}
@@ -923,7 +1344,6 @@
       \item Simulate small size \texttt{Hadron Endcap}. Calibrate and establish energy resolution properties.
       \item Simulate small size \texttt{CALICE-like SiW or High Granularity Calorimeter like system}. Calibrate and establish energy resolution properties for both: EM and Hadronic parts.
       \item Scale up both \texttt{Shashlik+HE and CALICE-like systems} to the proposed CMS Phase 2 dimensions and estimate the ``Particle Gun'' reconstruction efficiency.
-      \item \pause Use \texttt{CMS VBF Higgs MC GEN-level} samples with 140 PileUp (PU) to estimate Higgs Reconstruction properties
     \end{itemize}
   \end{frame}
 
