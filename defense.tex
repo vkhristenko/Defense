@@ -291,6 +291,28 @@
      \end{frame}
 }
 
+{ % all template changes are local to this group.
+    \setbeamertemplate{navigation symbols}{}
+    \begin{frame}[plain]
+        \begin{tikzpicture}[remember picture,overlay]
+            \node[at=(current page.center)] {
+                \includegraphics[width=\paperwidth]{figs/lhc/large-hadron-collider-4-638.jpg}
+            };
+        \end{tikzpicture}
+     \end{frame}
+}
+
+{ % all template changes are local to this group.
+    \setbeamertemplate{navigation symbols}{}
+    \begin{frame}[plain]
+        \begin{tikzpicture}[remember picture,overlay]
+            \node[at=(current page.center)] {
+                \includegraphics[width=\paperwidth]{figs/lhc/LHC_Fig1.jpg}
+            };
+        \end{tikzpicture}
+     \end{frame}
+}
+
   \begin{frame}{Large Hadron Collider}
     \begin{columns}[T]
       \begin{column}{0.6\textwidth}
@@ -429,6 +451,7 @@
   \end{frame}
 
   \begin{frame}{Datasets and Configuration: Data}
+    \begin{center}Total Integrated Luminosity: 35.9 fb$^{-1}$\end{center}
     \begin{table}[htb]
     \caption{Datasets for proton-proton collisions recorded at $\sqrt{s}=13$~TeV by CMS at LHC in 2016.}
     \label{table:higgs_data_collisiondatasets}
@@ -452,7 +475,8 @@
 
   \begin{frame}{Datasets and Configuration: SM Higgs Signal}
     \begin{table}[htb]
-    \caption{Standard Model 125 GeV Higgs Boson Signal Datasets for 13 TeV. Dataset names for 120/130 GeV are omitted for brevity. Moriond 2017 conditions are used (omitted the conditions specification for brevity).}
+    \begin{center}3 signal samples: 120, 125, 130 GeV\end{center}
+    \caption{Standard Model 125 GeV Higgs Boson Signal Datasets for 13 TeV. Moriond 2017 conditions are used}
     \label{table:higgs_data_signaldatasets}
     \begin{center}
         \begin{tabular}{ l  c}
@@ -562,7 +586,7 @@
         \includegraphics[width=0.99\textwidth, height=0.45\textheight]{figs/higgs/distributions/baseline_rochester/distribution__NoCats__Muonphi__logY.png}
       \end{column}
       \begin{column}{0.5\textwidth}
-        \includegraphics[width=0.99\textwidth, height=0.45\textheight]{figs/higgs/distributions/baseline_rochester/distribution__NoCats__DiMuonpt__logY.png}\\
+        \includegraphics[width=0.99\textwidth, height=0.45\textheight]{figs/higgs/distributions/baseline_rochester/distribution__NoCats__DiMuoneta__logY.png}\\
         \includegraphics[width=0.99\textwidth, height=0.45\textheight]{figs/higgs/distributions/baseline_rochester/distribution__NoCats__Muoneta__logY.png}
       \end{column}
     \end{columns}
@@ -690,6 +714,10 @@
 
   % \begin{frame}{Signal Modeling}
   % \end{frame}
+
+  \begin{frame}{Modeling}
+    \textbf{-}
+  \end{frame}
 
   \begin{frame}{Signal Model: Basics}
         \textbf{-} Triple Gaussian PDF:\\\vspace{-0.4cm}
@@ -849,11 +877,13 @@
           \item Jets Energy Resolution:  1 - 2\%
           \item Pile-Up: 1 - 2\%
           \item \dots
+          \item Change a selection and events will be in a different category
         \end{itemize}
       \item Rate Uncertainties
         \begin{itemize}
           \item Branching Ratio $\mathcal{B}$($H$ $\rightarrow$ $\mu\mu$) - 1.7\%
           \item Higgs boson Production Cross-sections 5 - 10\%
+          \item Directly affect the yield
         \end{itemize}
       \item Integrated Luminosity: 2.6\%
       \item \alert{All of the systematics, except for shape, are incorporated as multiplicative nuisances that allow the overall normalization of the signal to vary within certain bounds}
@@ -925,7 +955,7 @@
       \item A search for the Standard Model Higgs Boson decaying to 2 muons has been performed.
       \item No significant excess of events was observed
       \item For the 125 GeV Higgs Boson, the observed (expected) limit on $\mu$ is 2.77 ($2.02^{+0.85}_{-0.58}$) $\times$ SM for 13 TeV
-      \item The observed / expected difference corresponds to $\approx$ 1$\sigma$ around 125 GeV.
+      \item The observed / expected difference corresponds to $\approx$ 1$\sigma$ signal around 125 GeV.
       \item For Run I, the combined observed (expected) limit for the 7 and 8 TeV data was found to be 7.4 ($6.5^{+2.8}_{-1.9}$) \times SM.
       \item \alert{With 95\% CL we exclude the Branching Fraction ($\mathcal{B}$ $\rightarrow$ $\mu\mu$) above $\approx$ 0.0006}.
     \end{itemize}
@@ -1243,12 +1273,61 @@
 
   \begin{frame}{Systematic Uncertainties}
     \begin{itemize}
-      \item 1TS vs 2TS - since data-taking has been performed for the whole detector using different integration windows we can estimate the difference
-      \item Transversal Uniformity Tubes A\&B - certain towers have 2 source tubes, therefore they were sourced twice and the difference can be estimated.
+      \item 1TS vs 2TS - since data-taking has been performed for the whole detector using different integration windows we can estimate the difference. \alert{Under 1.5\%}
+      \item Transversal Uniformity Tubes A\&B - certain towers have 2 source tubes, therefore they were sourced twice and the difference can be estimated. \alert{Under 1\%}
       \item Overflow - can estimate the lower bound only, but number of events in the tail is $< 1\%$ w.r.t. total
-      \item Longitudinal Uniformity - can use parts of the source path within the tower to estimate the difference in the signal along the path.
-      \item Results have been cross-checked via 2 completely analyses.
+      \item Longitudinal Uniformity - can use parts of the source path within the tower to estimate the difference in the signal along the path. \alert{3 - 5\%}
+      \item Results have been cross-checked via 2 completely analyses. \alert{Under 1\%}
     \end{itemize}
+  \end{frame}
+
+  \begin{frame}{Systematic Uncertainties: 1TS vs 2TS}
+    \begin{columns}[T]
+      \begin{column}{0.6\textwidth}
+        \begin{center}
+        \begin{itemize}
+            \item 1TS - 1 Time Slice mode
+            \item 2TS - 2 Time Slice mode - \alert{more charge accumulated per event!}
+            \item Ratio of Calibration Coefficients for 1TS and 2TS compared
+            \item Without overflow bin
+            \item Source Energy Deposition was computed without overflow bin
+            \item Same selections for 2013 and 2014
+            \item 1TS and 2TS differ by 1.5\%
+        \end{itemize}
+        \end{center}
+      \end{column}
+      \begin{column}{0.4\textwidth}
+        \includegraphics[width=0.95\textwidth, height=0.4\textheight]{figs/sourcing/HFM_1TSto2TS_woOF.png}\\
+        \includegraphics[width=0.95\textwidth, height=0.4\textheight]{figs/sourcing/HFP_1TSto2TS_woOF.png}
+      \end{column}
+    \end{columns}
+  \end{frame}
+
+    \begin{frame}{Systematic Uncertainties: Transversal Uniformity with A/B tubes}
+    \begin{columns}[T]
+      \begin{column}{0.6\textwidth}
+        \begin{center}
+        \begin{itemize}
+            \item Source tube is inserted inside an HF tower in place of either long fiber or short.
+            \item Ratio of Calibration Coefficients using tubes A/B was computed
+            \item Source Energy Deposition was computed without overflow bin
+            \item Same selections for 2013 and 2014
+            \item On average results for A/B tubes differ by less than 1\%
+            \item Observed spread on the ratio is due to the Transversal Non-Uniformity of the HF Wedges
+        \end{itemize}
+        \end{center}
+      \end{column}
+      \begin{column}{0.4\textwidth}
+        \includegraphics[width=0.95\textwidth, height=0.4\textheight]{figs/sourcing/HFM_A2B_woOF.png}\\
+        \includegraphics[width=0.95\textwidth, height=0.4\textheight]{figs/sourcing/HFP_A2B_woOF.png}
+      \end{column}
+    \end{columns}
+  \end{frame}
+
+  \begin{frame}{Systematic Uncertainties: A/B Tubes}
+  \begin{center}
+    \includegraphics[width=0.6\textwidth, height=0.8\textheight]{figs/sourcing/HFWedge.png}
+  \end{center}
   \end{frame}
 
   \begin{frame}
@@ -1279,8 +1358,7 @@
 
   \begin{frame}{Conclusions}
     \begin{itemize}
-      \item A brief description of the Calibration Procedure and Results have been provided
-      \item Details on the study of systematics have been omitted.
+      \item Results for the Calibration Procedure of Hadron Forward Calorimeter presented
       \item This project has been fully completed.
     \end{itemize}
     \begin{block}{Remark}
@@ -1292,6 +1370,22 @@
 % Simulations part
 %
 \section{Simulations of Modern Calorimeter Systems}
+
+{ % all template changes are local to this group.
+    \setbeamertemplate{navigation symbols}{}
+    \begin{frame}[plain]
+        \begin{tikzpicture}[remember picture,overlay]
+            \node[at=(current page.center)] {
+                \includegraphics[width=\paperwidth]{figs/shashlik_fullscale/Shashlik+HE_Complete_Wire.png}
+            };
+        \end{tikzpicture}
+     \end{frame}
+}
+
+\begin{frame}[plain]
+%    \hspace*{-19mm}
+    \includegraphics[width=\paperwidth]{figs/shashlik_fullscale/Shashlik+HE_Complete_Wire.png}
+\end{frame}
 
   \begin{frame}{Geant4 based Systems}
     \begin{columns}[T]
